@@ -1,0 +1,76 @@
+Act as a Principal Database Architect specializing in PostgreSQL 16+.
+
+Please thoroughly analyze all project rules and specifications defined in:
+1. `@.cursorrules`
+2. `@Solar-DB/DB_REQUIREMENTS.md`
+3. `@Solar-DB/BRD.md`
+
+Your objective is to propose a complete, highly optimized, and production-ready Database DDL Schema for our Solar Service Management Application before we execute it.
+
+Please generate the proposed DDL structure in markdown format (for review purposes) covering all 10 modules from the BRD, strictly adhering to the following database standards:
+
+### 1. Mandatory Table Standards & Naming Conventions:
+- Transaction Tables: Must use `_details` suffix (e.g., `user_details`, `customer_details`, `complaint_ticket_details`).
+- Reference Master Tables: Standard normalized pair `ref_data_categories` and `ref_data` for dynamic single-API dropdowns.
+- Other Reference Tables: Standalone reference tables MUST start with `ref_` prefix (e.g., `ref_states`, `ref_cities`).
+- Logging Tables: MUST start with `log_` prefix (e.g., `log_api_execution`, `log_sql_functions`, `log_user_sessions`).
+- Identity Columns: All Primary Keys must use `GENERATED ALWAYS AS IDENTITY`.
+- Audit Columns: EVERY table MUST include all 5 mandatory audit fields:
+  * `active_ind` BOOLEAN DEFAULT TRUE NOT NULL
+  * `created_by` VARCHAR(50) DEFAULT 'SYSTEM' NOT NULL
+  * `updated_by` VARCHAR(50) DEFAULT 'SYSTEM' NOT NULL
+  * `created_on` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+  * `updated_on` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+- Strict Rule: DO NOT include any database triggers.
+
+### 2. Comprehensive DDL Output Requirements:
+For every single table in the design, provide:
+1. Complete `CREATE TABLE` statements with explicit data types, default values, `NOT NULL` constraints, and identity keys.
+2. Inline SQL Column Comments (`COMMENT ON COLUMN table_name.column_name IS '...'`) explaining the business purpose of every column.
+3. Explicit Primary Keys, Foreign Keys (with appropriate `ON DELETE RESTRICT/CASCADE` behavior), and Unique/Check Constraints.
+4. Strategic Indexes (`CREATE INDEX`) on foreign keys, frequently searched fields, and soft-delete (`active_ind`) flags for performance.
+5. Foreign Key relationships mapped out clearly between modules.
+
+Please organize the proposed DDL phase-by-phase according to the implementation roadmap in `@Solar-DB/BRD.md` so I can review the complete schema design first.
+
+
+Act as a Principal Database Architect specializing in PostgreSQL 16+.
+
+Please thoroughly analyze all project rules and specifications defined in:
+1. `@.cursorrules`
+2. `@Solar-DB/DB_REQUIREMENTS.md`
+3. `@Documents/BRD.md`
+
+Our database environment is now initialized as:
+- Database Name: SolarDB
+- Owner/User: solar_app_user
+- Target Schema: solar_app
+
+Your objective is to propose the complete, highly optimized, and production-ready Database DDL Schema for our Solar Service Management Application before we save and execute it in `Solar-DB/01_schema.sql`.
+
+Please generate the proposed DDL structure in markdown format (for review purposes) covering all 10 modules from the BRD, strictly adhering to the following standards:
+
+### 1. Schema & Table Naming Standards:
+- Explicit Schema: Include `SET search_path TO solar_app;` at the top of the file.
+- Transaction Tables: Must use `_details` suffix (e.g., `user_details`, `customer_details`, `complaint_ticket_details`).
+- Reference Master Tables: Standard normalized pair `ref_data_categories` and `ref_data` for dynamic single-API dropdowns.
+- Other Reference Tables: Standalone reference tables MUST start with `ref_` prefix (e.g., `ref_states`, `ref_cities`).
+- Logging Tables: MUST start with `log_` prefix (e.g., `log_api_execution`, `log_sql_functions`, `log_user_sessions`).
+- Identity Columns: All Primary Keys must use `GENERATED ALWAYS AS IDENTITY`.
+- Mandatory Audit Columns: EVERY table MUST include all 5 mandatory audit fields:
+  * `active_ind` BOOLEAN DEFAULT TRUE NOT NULL
+  * `created_by` VARCHAR(50) DEFAULT 'SYSTEM' NOT NULL
+  * `updated_by` VARCHAR(50) DEFAULT 'SYSTEM' NOT NULL
+  * `created_on` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+  * `updated_on` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+- Strict Constraint: DO NOT include any database triggers.
+
+### 2. Comprehensive DDL Output Requirements:
+For every table in the design, provide:
+1. Complete `CREATE TABLE` statements with explicit data types, default values, `NOT NULL` constraints, and identity keys under `solar_app`.
+2. Inline SQL Column Comments (`COMMENT ON COLUMN solar_app.table_name.column_name IS '...'`) explaining the business purpose of every column.
+3. Explicit Primary Keys, Foreign Keys (with appropriate `ON DELETE RESTRICT/CASCADE` behavior), and Unique/Check Constraints.
+4. Strategic Indexes (`CREATE INDEX`) on foreign keys, frequently searched fields, and soft-delete (`active_ind`) flags for performance.
+5. Clear module-by-module organization following the implementation roadmap in `@Solar-DB/BRD.md`.
+
+Please present the full DDL proposal now for design review.
