@@ -39,7 +39,7 @@ Act as a Principal Database Architect specializing in PostgreSQL 16+.
 Please thoroughly analyze all project rules and specifications defined in:
 1. `@.cursorrules`
 2. `@Solar-DB/DB_REQUIREMENTS.md`
-3. `@Documents/BRD.md`
+3. `@Solar-Docs/BRD.md`
 
 Our database environment is now initialized as:
 - Database Name: SolarDB

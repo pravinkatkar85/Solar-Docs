@@ -39,7 +39,7 @@ Approval is blocked by:
 
 | Area | Files |
 |---|---|
-| Requirements | `Documents/BRD.md`, `Documents/Notes.txt`, `.cursorrules` |
+| Requirements | `Solar-Docs/BRD.md`, `Solar-Docs/Notes.txt`, `.cursorrules` |
 | Database design | `Solar-DB/DB_REQUIREMENTS.md`, `Solar-DB/DB-Design.md`, `Solar-DB/DDL_SCHEMA.md`, `Solar-DB/DB-Setup.sql` |
 | Reference documentation | `Solar-DB/reference-data/SUMMARY.md` |
 | JSON | All 15 files under `Solar-DB/reference-data/json/` |
@@ -49,8 +49,8 @@ Approval is blocked by:
 
 ### Missing
 
-- `Documents/BRD.pdf`
-- `Documents/सोलर अॅप डेव्हलपमेंट.pdf`
+- `Solar-Docs/BRD.pdf`
+- `Solar-Docs/सोलर अॅप डेव्हलपमेंट.pdf`
 - `Solar-DB/SUMMARY.md`
 
 A similarly named file exists at `Solar-DB/reference-data/SUMMARY.md`, but it is only a reference-data summary.
